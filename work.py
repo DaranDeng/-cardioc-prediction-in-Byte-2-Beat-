@@ -71,12 +71,9 @@ print("\n[完成] 图表已保存为 feature_importance.png，可直接放入 PP
 y_pred = clf.predict(X_test)
 y_prob = clf.predict_proba(X_test)[:, 1]
 
-print("\n=== 模型成绩单 ===")
-print(f"AUC Score (越接近1越好): {roc_auc_score(y_test, y_prob):.4f}")
-print("\n具体报告:")
-print(classification_report(y_test, y_pred))
 
 # 7. 看看谁最重要 (给评委讲故事的核心)
 feat_importances = pd.Series(clf.feature_importances_, index=features)
 print("\n=== 影响心脏病最重要的 5 个因素 ===")
+
 print(feat_importances.nlargest(5))
